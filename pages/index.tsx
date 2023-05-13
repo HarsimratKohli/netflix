@@ -2,7 +2,7 @@ import Auth from "./auth"
 export default function Home() {
   return (
     <>
-      <Auth/>
+      <p className="color text-white">Netflix Clone</p>
     </>
   )
 }
