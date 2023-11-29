@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import {BsPlayFill} from 'react-icons/bs';
 import FavoriteButton from './FavoriteButton';
 import { useRouter } from 'next/router';
@@ -12,7 +12,7 @@ interface MovieCardProps {
 const MovieCard:React.FC<MovieCardProps> = ({data}) =>{
     const router = useRouter();
     const {openModal} = useInfoModal();
-
+    const redirectToWatch = useCallback(() => router.push(`/watch/${data.id}`), [router, data.id]);
     return (
         <div className='group bg-zinc-900 col-span relative h-[12vw]'>
             <img className='
@@ -27,7 +27,7 @@ const MovieCard:React.FC<MovieCardProps> = ({data}) =>{
             delay-300
             w-full
             h-[12vw]'
-             src={data?.thumbUrl} alt="Thumbnail" />
+            onClick={redirectToWatch} draggable={false} src={data?.thumbUrl} alt="Thumbnail" />
             
             <div className='
                 opacity-0
@@ -39,7 +39,7 @@ const MovieCard:React.FC<MovieCardProps> = ({data}) =>{
                 invisible
                 sm:visible
                 delay-300
-                wi-full
+                w-full
                 scale-0
                 group-hover:scale-110
                 group-hover:-translate-y-[6vw]
@@ -74,15 +74,16 @@ const MovieCard:React.FC<MovieCardProps> = ({data}) =>{
                                 h-6
                                 lg:w-10
                                 lg:h-10
-                                bg:white
+                                bg-white
                                 rounded-full
                                 flex
                                 justify-center
                                 items-center
                                 transition
                                 hover:bg-neutral-300'
-                                    onClick={()=> router.push(`/watch/${data?.id}`)}
-                                ><BsPlayFill size={30}/> 
+                                onClick={()=> router.push(`/watch/${data?.id}`)}
+                                >
+                                    <BsPlayFill size={30}/> 
                                 </div>
                                 <FavoriteButton movieId={data?.id}/>
                                 <div onClick={() => openModal(data?.id)} className="cursor-pointer ml-auto group/item w-6 h-6 lg:w-10 lg:h-10 border-white border-2 rounded-full flex justify-center items-center transition hover:border-neutral-300">
