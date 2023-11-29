@@ -9,9 +9,8 @@ import InfoModal from "@/components/InfoModal";
 import useInfoModal from "@/hooks/useInfoModal";
 
 export async function getServerSideProps(context: NextPageContext) {
-  const session = await getSession(context);
-  
   try{
+    const session = await getSession(context);
     if(!session){
       return {
         redirect:{
@@ -21,13 +20,10 @@ export async function getServerSideProps(context: NextPageContext) {
       }
     }
 
-    return {
-      props:{
-        session
-      }
-    }
+    return {props:{}}
   } catch(error){
     console.log(error)
+    return {props :{}}
   }
 }
 
