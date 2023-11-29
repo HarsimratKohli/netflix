@@ -1,10 +1,30 @@
 import Input from "@/components/input";
 import { useCallback, useState } from "react";
 import  axios from "axios";
-import {signIn} from 'next-auth/react';
+import {getSession, signIn} from 'next-auth/react';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 import Github from "next-auth/providers/github";
+import { NextPageContext } from "next";
+
+
+export async function getServerSideProps(context: NextPageContext) {
+    const session = await getSession(context);
+  
+    if (session) {
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false,
+        }
+      }
+    }
+  
+    return {
+      props: {}
+    }
+  }
+
 
 const Auth = () => {
     const [email, setEmail] = useState('');

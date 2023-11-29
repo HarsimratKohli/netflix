@@ -19,11 +19,11 @@ export async function getServerSideProps(context: NextPageContext) {
         }
       }
     }
-
-    return {props:{}}
+    return {
+      props: {}
+    }
   } catch(error){
     console.log(error)
-    return {props :{}}
   }
 }
 
