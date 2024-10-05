@@ -2,7 +2,7 @@
 
 # A dynamic streaming platform built with ReactJS, MongoDB, and Tailwind CSS
 
-Link to the website: https://netflix-jw2rvdc0y-harsimrats-projects.vercel.app/
+Link to the website: https://netflix-roan-six.vercel.app/
 
 ![Screenshot 2024-02-09 192736](https://github.com/HarsimratKohli/netflix/assets/36025573/c585a509-12d5-44ac-ab3d-e478fd085bce)
 
